@@ -13,5 +13,8 @@ class Display:
         for key, value in data.items():
             print(f'{key}: {value}')
 
+    def display_temperature(self, temperature):
+        print(f"Current temperature: {temperature}°C")
+
     def __str__(self):
         return f'{self.id}:Display is {"is on" if self.is_on else "if off"}'

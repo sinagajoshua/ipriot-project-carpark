@@ -1,3 +1,5 @@
+from sensor import Sensor
+from display import Display
 class CarPark:
     def __init__(self,
                  location,
@@ -11,6 +13,11 @@ class CarPark:
         self.plates = plates or []
         self.sensors = sensors or []
         self.displays = displays or []
+
+
+    def available_bays(self):
+        return max(0, self.capacity - len(self.plates))
+
     def __str__(self):
         return f"Welcome to {self.location} car park"
 

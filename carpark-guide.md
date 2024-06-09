@@ -70,11 +70,11 @@ Include a screenshot of your GitHub repository **after** you have pushed your in
 
 After reading the task requirements, you should be able to identify the classes, methods, and attributes required for the car park system. Complete the following table with the classes, methods, and attributes you must implement.
 
-| Class Name | Attributes | Methods |
-| ---------- | ---------- | ------- |
-| `CarPark`    |            |         |
-| `Sensor`     |            |         |
-| `Display`    |            |         |
+| Class Name | Attributes                                              | Methods                                                                                                                             |
+| ---------- |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `CarPark`    | location, capacity, plates, sensors, displays, log_file | __init__(), to_json(), from_json(), available_bays(), __str__(), register(), _log_car(), add_car(), remove_car(), update_displays() |
+| `Sensor`     | id, car_park, message, is_active                        | __init__(), _scan_plate(), update_car_park(), detect_vehicle(), __str__()                                                           |
+| `Display`    | id, car_park, message, is_on                            | __init__(), update(), __str__()                                                                                                     |
 
 **Evidencing:**
 Ensure you have completed the previous table and include at least two methods and attributes for each.
@@ -102,9 +102,7 @@ Ensure you have completed the previous table and include at least two methods an
 **Evidencing:**
 Include a screenshot of your GitHub repository `src/` directory **after** you have pushed your changes.
 
-```markdown
-![Added stubs for classes](images/stubs-for-classes.png)
-```
+![img_2.png](img_2.png)
 
 ### Add constructors and attributes to the classes
 
@@ -204,11 +202,7 @@ You realize that you need a way to configure the car park system. You decide to 
 **Evidencing:**
 Ensure that you have completed the previous steps and created the appropriate tags. Confirm that the tags have been created by running `git tag` in the terminal and provide a screenshot of the output.
 
-```bash
-[student@workstation ipriot-car-park-prj]$ git tag
-s1
-s2
-```
+![img_3.png](img_3.png)
 
 ### Relate the classes
 
@@ -333,11 +327,7 @@ Now, we can add the code to add the `component` to the appropriate list. Add the
 **Evidencing:**
 After you have implemented the required code, commit your changes to the local repository and add a tag so your lecturer can find it:
 
-   ```bash
-   git add .
-   git commit -m "Added a register method to the car park class"
-   git tag -a "s3" -m "Added a register method to the car park class"
-   ```
+![img_4.png](img_4.png)
 
 #### Add and remove car methods
 
@@ -367,11 +357,16 @@ You may want to see the number of available bays, the current temperature, and t
 Now consider, between the `CarPark`, `Sensor`, and `Display` classes, which class is responsible for each piece of information? There's no right or wrong answer here. But you should be able to justify your answer.
 
 >Q. Which class is responsible for the number of available bays (and why)?
->
+> 
+>A. The CarPark class calculates the number of available parking bays by subtracting the current number of parked cars from the total capacity of the car park.  
+
 >Q. Which class is responsible for the current temperature (and why)?
->
+> 
+>A. The Display class is responsible to present the current temperature as it handles the display of real-time information in the car park system.
+
 >Q. Which class is responsible for the time (and why)?
->
+> 
+>A. The datetime module is in charge of handles dates and times, which is needed to record cars entering and exiting the parking lot.
 --------
 
 ##### Detour: implement available bays
@@ -428,11 +423,7 @@ The `update_displays` method shall send status information: available bays, temp
 **Evidencing:**
 After you have implemented the required code, commit your changes to the local repository and add a tag so your lecturer can find it:
 
-   ```bash
-   git add .
-   git commit -m "Added methods to the car park class"
-   git tag -a "s4" -m "Added methods to the car park class"
-   ```
+![img_5.png](img_5.png)
 
 This time, we will push the tag to the remote repository:
 
@@ -442,26 +433,24 @@ This time, we will push the tag to the remote repository:
 
 Add a screenshot of the GitHub repository after pushing the tag, showing the CarPark class with the new methods:
 
-```markdown
-![Added methods to the car park class](images/methods-to-car-park.png)
-```
+![img_6.png](img_6.png)
 
 Answer the following questions:
 > **Review Questions**
 >
 > 1. **Which class is responsible for each of the following pieces of information (and why)?**
 >    - _The number of available bays_  
->      `Answer here...`
+>      `The CarPark class, because it tracks the cars and knows the total capacity`
 >    - _The current temperature_  
->      `Answer here...`
+>      `The Display class, because it shows real-time information like temperature.`
 >    - _The time_  
->      `Answer here...`
+>      `The datetime module, because it provides tools to handle dates and times.`
 >
 > 2. **What is the difference between an attribute and a property?**  
->    `Answer here...`
+>    `An attribute is a variable in a class, while a property is an attribute with getter and setter methods to control access.`
 >
 > 3. **Why do you think we used a dictionary to hold the data we passed the display? List at least one advantage and one disadvantage of this approach.**  
->    `Answer here...`
+>    `We used a dictionary to organize different types of information together.`
 
 #### Add a detect vehicle method to the Sensor class
 
@@ -559,11 +548,7 @@ def _scan_plate(self):
 **Evidencing:**
 After you have implemented the required code, commit your changes to the local repository and add a tag so your lecturer can find it:
 
-   ```bash
-   git add .
-   git commit -m "Created core methods for the classes"
-   git tag -a "s5" -m "Core methods completed"
-   ```
+![img_7.png](img_7.png)
 
 Probably a good idea to commit to GitHub now:
 
@@ -705,9 +690,7 @@ if __name__ == "__main__":
 
 1. Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
 
-   ```markdown
-   ![Unit tests](images/unit-tests.png)
-   ```
+![img_8.png](img_8.png)
 
 2. Commit your changes to the local repository. Tag the commit with `s6` so your lecturer can find it:
 3. Push the tag to the remote repository:
@@ -760,7 +743,7 @@ Next, we'll create tests for the `Display` class. These tests will test the `__i
 7. Run the unit test in PyCharm.
 8. Fix any errors you encounter.
 
-**Evidencing:**
+![img_9.png](img_9.png)
 
 1. Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
 
@@ -798,6 +781,8 @@ with self.assertRaises(TypeError):
 **Evidencing:**
 
 Commit your original test cases for the sensor class to the local repository. Tag the commit with `s8` so your lecturer can find it.
+
+
 
 ### Additional functionality: TDD
 

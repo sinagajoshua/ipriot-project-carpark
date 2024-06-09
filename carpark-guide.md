@@ -768,7 +768,7 @@ Finally, we'll create tests for the `Sensor` class. These tests will test the `_
 
 The car park register method should accept a `Sensor` or `Display` object. It should raise a `TypeError` if the object is neither a `Sensor` nor a `Display`. Before proceeding, think about where you would test this behaviour. Should you test it in the `CarPark` unit tests or the `Sensor` unit tests? Why?
 
-> Answer here...
+> Because the register method is part of the CarPark class, so its behavior should be checked there.
 
 Create a new unit test in the `test_car_park.py` file called `test_register_raises_type_error`. This test should create a `CarPark` object and a `str` object. It should then call the `register` method on the `CarPark` object with the `str` object as a parameter. The test should assert that a `TypeError` is raised. Here is a sample implementation:
 
@@ -782,7 +782,7 @@ with self.assertRaises(TypeError):
 
 Commit your original test cases for the sensor class to the local repository. Tag the commit with `s8` so your lecturer can find it.
 
-
+![img_10.png](img_10.png)
 
 ### Additional functionality: TDD
 

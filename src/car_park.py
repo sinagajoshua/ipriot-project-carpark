@@ -72,3 +72,19 @@ class CarPark:
                             "News": "Nice things happened today"}
                            )
             print(f"Updating: {display}")
+
+    def _log_car_activity(self, plate, action):
+        with self.log_file.open("a") as f:
+            f.write(f"{plate} {action} at {datetime.now()}\n")
+
+    def write_config(self):
+        with open("config.json", "w") as f:  # TODO: use self.config_file; use Path; add optional parm to __init__
+            json.dump({"location": self.location,
+                       "capacity": self.capacity,
+                       "log_file": str(self.log_file)}, f)
+
+    def from_config(cls, config_file=Path("config.json")):
+        config_file = config_file if isinstance(config_file, Path) else Path(config_file)
+        with config_file.open() as f:
+            config = json.load(f)
+        return cls(config["location"], config["capacity"], log_file=config["log_file"])
